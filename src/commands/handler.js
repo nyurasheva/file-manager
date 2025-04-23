@@ -13,6 +13,7 @@ import {
   osUsername,
   osArch
 } from './os.js';
+import { hash } from './hash.js';
 import { INVALID_CMD_MESSAGE } from '../constants/messages.js';
 
 const COMMANDS = {
@@ -36,6 +37,9 @@ const COMMANDS = {
   '--homedir': () => osHomeDir(),
   '--username': () => osUsername(),
   '--architecture': () => osArch(),
+
+  // Hash & zip
+  hash: args => hash(args[0]),
 };
 
 export async function handleCommand(input) {
