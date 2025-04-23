@@ -1,0 +1,33 @@
+{
+  "name": "file-manager",
+  "version": "1.0.0",
+  "description": "Node.js File Manager",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=22.14.0"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node src/index.js -- --username=Anastasiia",
+    "format": "prettier --write .",
+    "lint": "eslint \"src/**/*.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nyurasheva/file-manager.git"
+  },
+  "author": "Anastasiia Yurasheva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nyurasheva/file-manager/issues"
+  },
+  "homepage": "https://github.com/nyurasheva/file-manager#readme",
+  "devDependencies": {
+    "eslint": "^9.25.1",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "prettier": "^3.5.3"
+  }
+}
