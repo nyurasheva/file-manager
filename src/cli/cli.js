@@ -1,6 +1,11 @@
 import readline from 'readline';
 import { getState, setState } from '../state.js';
-import { GREETING_MSG, CURRENT_DIR_MSG, THANKS_MSG } from '../constants/messages.js';
+import { handleCommand } from '../commands/handler.js';
+import {
+  GREETING_MSG,
+  CURRENT_DIR_MSG,
+  THANKS_MSG,
+  EXIT_CMD} from '../constants/messages.js';
 
 export function startCLI({ username, home }) {
   setState('username', username);
@@ -11,16 +16,19 @@ export function startCLI({ username, home }) {
 
   const rl = readline.createInterface({
     input: process.stdin,
-    output: process.stdout
+    output: process.stdout,
+    prompt: ''
   });
 
-  rl.on('line', line => {
+  rl.prompt();
+
+  rl.on('line', async (line) => {
     const cmd = line.trim();
-    if (cmd === '.exit') {
+    if (cmd === EXIT_CMD) {
       rl.close();
     } else {
-      // Пока просто игнорируем все команды
-      printCwd();
+      await handleCommand(cmd);
+      rl.prompt();
     }
   });
 
