@@ -15,62 +15,46 @@ import {
 } from './os.js';
 import { INVALID_CMD_MESSAGE } from '../constants/messages.js';
 
+const COMMANDS = {
+  // Navigation
+  up: () => up(),
+  cd: args => cd(args[0]),
+  ls: () => ls(),
+
+  // File operations
+  cat: args => cat(args[0]),
+  add: args => add(args[0]),
+  rn: args => rn(args[0], args[1]),
+  cp: args => cp(args[0], args[1]),
+  mv: args => mv(args[0], args[1]),
+  rm: args => rm(args[0]),
+  mkdir: args => mkdir(args[0]),
+
+  // OS info
+  '--EOL': () => osEOL(),
+  '--cpus': () => osCPUs(),
+  '--homedir': () => osHomeDir(),
+  '--username': () => osUsername(),
+  '--architecture': () => osArch(),
+};
+
 export async function handleCommand(input) {
   const [cmd, ...args] = input.split(' ');
 
-  switch (cmd) {
-    // Navigation
-    case 'up':
-      await up();
-      break;
-    case 'cd':
-      await cd(args[0]);
-      break;
-    case 'ls':
-      await ls();
-      break;
-
-    // File operations
-    case 'cat':
-      await cat(args[0]);
-      break;
-    case 'add':
-      await add(args[0]);
-      break;
-    case 'rn':
-      await rn(args[0], args[1]);
-      break;
-    case 'cp':
-      await cp(args[0], args[1]);
-      break;
-    case 'mv':
-      await mv(args[0], args[1]);
-      break;
-    case 'rm':
-      await rm(args[0]);
-      break;
-    case 'mkdir':
-      await mkdir(args[0]);
-      break;
-
-    // OS info
-    case 'os':
-      if (args[0] === '--EOL') {
-        osEOL();
-      } else if (args[0] === '--cpus') {
-        osCPUs();
-      } else if (args[0] === '--homedir') {
-        osHomeDir();
-      } else if (args[0] === '--username') {
-        osUsername();
-      } else if (args[0] === '--architecture') {
-        osArch();
-      } else {
-        console.log(INVALID_CMD_MESSAGE);
-      }
-      break;
-
-    default:
-      console.log(INVALID_CMD_MESSAGE);
+  if (cmd === 'os') {
+    const sub = args[0];
+    const fn = COMMANDS[sub];
+    if (fn) {
+      await fn(args.slice(1));
+      return;
+    }
+  } else {
+    const fn = COMMANDS[cmd];
+    if (fn) {
+      await fn(args);
+      return;
+    }
   }
+
+  console.log(INVALID_CMD_MESSAGE);
 }
