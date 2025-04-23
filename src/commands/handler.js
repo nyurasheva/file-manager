@@ -14,6 +14,7 @@ import {
   osArch
 } from './os.js';
 import { hash } from './hash.js';
+import { compress, decompress } from './zip.js';
 import { INVALID_CMD_MESSAGE } from '../constants/messages.js';
 
 const COMMANDS = {
@@ -40,6 +41,8 @@ const COMMANDS = {
 
   // Hash & zip
   hash: args => hash(args[0]),
+  compress: args => compress(args[0], args[1]),
+  decompress: args => decompress(args[0], args[1]),
 };
 
 export async function handleCommand(input) {
