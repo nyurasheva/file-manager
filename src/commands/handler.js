@@ -6,6 +6,13 @@ import { cp } from './file/cp.js';
 import { mv } from './file/mv.js';
 import { rm } from './file/rm.js';
 import { mkdir } from './file/mkdir.js';
+import {
+  osEOL,
+  osCPUs,
+  osHomeDir,
+  osUsername,
+  osArch
+} from './os.js';
 import { INVALID_CMD_MESSAGE } from '../constants/messages.js';
 
 export async function handleCommand(input) {
@@ -44,6 +51,23 @@ export async function handleCommand(input) {
       break;
     case 'mkdir':
       await mkdir(args[0]);
+      break;
+
+    // OS info
+    case 'os':
+      if (args[0] === '--EOL') {
+        osEOL();
+      } else if (args[0] === '--cpus') {
+        osCPUs();
+      } else if (args[0] === '--homedir') {
+        osHomeDir();
+      } else if (args[0] === '--username') {
+        osUsername();
+      } else if (args[0] === '--architecture') {
+        osArch();
+      } else {
+        console.log(INVALID_CMD_MESSAGE);
+      }
       break;
 
     default:
