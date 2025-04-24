@@ -1,6 +1,6 @@
 import fs from 'fs';
 import crypto from 'crypto';
-import { OPERATION_FAILED_MSG } from '../constants/messages.js';
+import { OPERATION_FAILED_MSG } from '../../constants/messages.js';
 
 export async function hash(filepath) {
   try {

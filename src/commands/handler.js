@@ -1,4 +1,6 @@
-import { up, cd, ls } from './navigation.js';
+import { up } from './navigation/up.js';
+import { cd } from './navigation/cd.js';
+import { ls } from './navigation/ls.js';
 import { cat } from './file/cat.js';
 import { add } from './file/add.js';
 import { rn } from './file/rn.js';
@@ -12,9 +14,10 @@ import {
   osHomeDir,
   osUsername,
   osArch
-} from './os.js';
-import { hash } from './hash.js';
-import { compress, decompress } from './zip.js';
+} from './os/os.js';
+import { hash } from './hash/hash.js';
+import { compress } from './zip/compress.js';
+import { decompress } from './zip/decompress.js';
 import { INVALID_CMD_MESSAGE } from '../constants/messages.js';
 
 const COMMANDS = {
@@ -39,8 +42,10 @@ const COMMANDS = {
   '--username': () => osUsername(),
   '--architecture': () => osArch(),
 
-  // Hash & zip
+  // Hash
   hash: args => hash(args[0]),
+
+  // Zip
   compress: args => compress(args[0], args[1]),
   decompress: args => decompress(args[0], args[1]),
 };

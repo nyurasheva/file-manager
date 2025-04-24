@@ -1,5 +1,5 @@
 import os from 'os';
-import { OPERATION_FAILED_MSG } from '../constants/messages.js';
+import { OPERATION_FAILED_MSG } from '../../constants/messages.js';
 
 // os --EOL
 export function osEOL() {

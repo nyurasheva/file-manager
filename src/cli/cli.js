@@ -1,11 +1,12 @@
 import readline from 'readline';
-import { getState, setState } from '../state.js';
+import { setState } from '../state.js';
 import { handleCommand } from '../commands/handler.js';
 import {
   GREETING_MSG,
-  CURRENT_DIR_MSG,
   THANKS_MSG,
-  EXIT_CMD} from '../constants/messages.js';
+  EXIT_CMD
+} from '../constants/messages.js';
+import { printCwd } from '../utils/dirUtils.js';
 
 export function startCLI({ username, home }) {
   setState('username', username);
@@ -36,9 +37,4 @@ export function startCLI({ username, home }) {
     console.log(`${THANKS_MSG} ${username}, goodbye!`);
     process.exit(0);
   });
-}
-
-function printCwd() {
-  const { cwd } = getState();
-  console.log(`${CURRENT_DIR_MSG} ${cwd}`);
 }
