@@ -3,7 +3,7 @@ import path from 'path';
 import { getState } from '../../state.js';
 import { printCwd } from '../../utils/dirUtils.js';
 import { toAbsolutePath } from '../../utils/pathUtils.js';
-import { OPERATION_FAILED_MSG } from '../../constants/messages.js';
+import { OPERATION_FAILED_MSG_RED } from '../../constants/messages.js';
 
 export async function ls() {
   const { cwd } = getState();
@@ -39,7 +39,7 @@ export async function ls() {
     });
     console.log(sep);
   } catch {
-    console.log(OPERATION_FAILED_MSG);
+    console.log(OPERATION_FAILED_MSG_RED);
   }
   printCwd();
 }

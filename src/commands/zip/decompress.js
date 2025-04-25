@@ -1,6 +1,6 @@
 import fs from 'fs';
 import zlib from 'zlib';
-import { OPERATION_FAILED_MSG } from '../../constants/messages.js';
+import { OPERATION_FAILED_MSG_RED } from '../../constants/messages.js';
 
 export async function decompress(src, dest) {
   try {
@@ -13,9 +13,9 @@ export async function decompress(src, dest) {
     writeStream.on('finish', () => {
       console.log(`File decompressed to ${dest}`);
     });
-    readStream.on('error', () => console.log(OPERATION_FAILED_MSG));
-    writeStream.on('error', () => console.log(OPERATION_FAILED_MSG));
+    readStream.on('error', () => console.log(OPERATION_FAILED_MSG_RED));
+    writeStream.on('error', () => console.log(OPERATION_FAILED_MSG_RED));
   } catch {
-    console.log(OPERATION_FAILED_MSG);
+    console.log(OPERATION_FAILED_MSG_RED);
   }
 }

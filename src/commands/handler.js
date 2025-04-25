@@ -18,7 +18,7 @@ import {
 import { hash } from './hash/hash.js';
 import { compress } from './zip/compress.js';
 import { decompress } from './zip/decompress.js';
-import { INVALID_CMD_MESSAGE } from '../constants/messages.js';
+import { INVALID_CMD_MESSAGE_MAGENTA } from '../constants/messages.js';
 
 const COMMANDS = {
   // Navigation
@@ -68,5 +68,5 @@ export async function handleCommand(input) {
     }
   }
 
-  console.log(INVALID_CMD_MESSAGE);
+  console.log(INVALID_CMD_MESSAGE_MAGENTA);
 }

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import crypto from 'crypto';
-import { OPERATION_FAILED_MSG } from '../../constants/messages.js';
+import { OPERATION_FAILED_MSG_RED } from '../../constants/messages.js';
 
 export async function hash(filepath) {
   try {
@@ -13,9 +13,9 @@ export async function hash(filepath) {
       console.log(digest);
     });
     stream.on('error', () => {
-      console.log(OPERATION_FAILED_MSG);
+      console.log(OPERATION_FAILED_MSG_RED);
     });
   } catch {
-    console.log(OPERATION_FAILED_MSG);
+    console.log(OPERATION_FAILED_MSG_RED);
   }
 }

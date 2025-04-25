@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { OPERATION_FAILED_MSG } from '../../constants/messages.js';
+import { OPERATION_FAILED_MSG_RED } from '../../constants/messages.js';
 
 export async function mv(src, destDir) {
   try {
@@ -9,6 +9,6 @@ export async function mv(src, destDir) {
     await fs.promises.rename(src, dest);
     console.log(`Moved ${src} to ${dest}`);
   } catch (err) {
-    console.error(OPERATION_FAILED_MSG);
+    console.error(OPERATION_FAILED_MSG_RED);
   }
 }

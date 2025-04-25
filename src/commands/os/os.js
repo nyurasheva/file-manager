@@ -1,12 +1,12 @@
 import os from 'os';
-import { OPERATION_FAILED_MSG } from '../../constants/messages.js';
+import { OPERATION_FAILED_MSG_RED } from '../../constants/messages.js';
 
 // os --EOL
 export function osEOL() {
   try {
     console.log(JSON.stringify(os.EOL));
   } catch {
-    console.log(OPERATION_FAILED_MSG);
+    console.log(OPERATION_FAILED_MSG_RED);
   }
 }
 
@@ -20,7 +20,7 @@ export function osCPUs() {
       console.log(`CPU ${idx + 1}: ${cpu.model}, ${speedGHz} GHz`);
     });
   } catch {
-    console.log(OPERATION_FAILED_MSG);
+    console.log(OPERATION_FAILED_MSG_RED);
   }
 }
 
@@ -29,7 +29,7 @@ export function osHomeDir() {
   try {
     console.log(os.homedir());
   } catch {
-    console.log(OPERATION_FAILED_MSG);
+    console.log(OPERATION_FAILED_MSG_RED);
   }
 }
 
@@ -39,7 +39,7 @@ export function osUsername() {
     const userInfo = os.userInfo();
     console.log(userInfo.username);
   } catch {
-    console.log(OPERATION_FAILED_MSG);
+    console.log(OPERATION_FAILED_MSG_RED);
   }
 }
 
@@ -48,6 +48,6 @@ export function osArch() {
   try {
     console.log(os.arch());
   } catch {
-    console.log(OPERATION_FAILED_MSG);
+    console.log(OPERATION_FAILED_MSG_RED);
   }
 }

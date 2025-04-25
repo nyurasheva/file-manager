@@ -7,12 +7,18 @@ import {
   EXIT_CMD
 } from '../constants/messages.js';
 import { printCwd } from '../utils/dirUtils.js';
+import {
+  FG_CYAN,
+  FG_YELLOW,
+  BRIGHT,
+  RESET
+} from '../constants/colors.js';
 
 export function startCLI({ username, home }) {
   setState('username', username);
   setState('cwd', home);
 
-  console.log(`${GREETING_MSG} ${username}!`);
+  console.log(`${FG_YELLOW}${BRIGHT}${GREETING_MSG} ${username}!${RESET}`);
   printCwd();
 
   const rl = readline.createInterface({
@@ -34,7 +40,7 @@ export function startCLI({ username, home }) {
   });
 
   rl.on('close', () => {
-    console.log(`${THANKS_MSG} ${username}, goodbye!`);
+    console.log(`${FG_YELLOW}${BRIGHT}${THANKS_MSG} ${username}, goodbye!${RESET}`);
     process.exit(0);
   });
 }
