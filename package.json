@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "node src/index.js -- --username=Anastasiia",
+    "dev": "node src/index.js",
     "format": "prettier --write .",
     "lint": "eslint \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -8,7 +8,6 @@ import {
 } from '../constants/messages.js';
 import { printCwd } from '../utils/dirUtils.js';
 import {
-  FG_CYAN,
   FG_YELLOW,
   BRIGHT,
   RESET

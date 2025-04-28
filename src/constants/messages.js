@@ -1,6 +1,7 @@
 import {
   FG_RED,
   FG_MAGENTA,
+  FG_GREEN,
   BRIGHT,
   RESET
 } from './colors.js'
@@ -12,4 +13,6 @@ export const INVALID_CMD_MESSAGE = 'Invalid input';
 export const INVALID_CMD_MESSAGE_MAGENTA = `${FG_MAGENTA}${INVALID_CMD_MESSAGE}${RESET}`;
 export const OPERATION_FAILED_MSG = 'Operation failed';
 export const OPERATION_FAILED_MSG_RED = `${FG_RED}${BRIGHT}${OPERATION_FAILED_MSG}${RESET}`;
+export const EMPTY_MSG = 'The directory is empty.';
+export const EMPTY_MSG_GREEN = `${FG_GREEN}${EMPTY_MSG}${RESET}`;
 export const EXIT_CMD = '.exit';
