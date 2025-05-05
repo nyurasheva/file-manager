@@ -1,7 +1,7 @@
 import os from 'os';
 import { OPERATION_FAILED_MSG_RED } from '../../constants/messages.js';
 import { printCwd } from '../../utils/dirUtils.js';
-import { FG_GREEN, BRIGHT, RESET } from '../../constants/colors.js'; // 
+import { FG_GREEN, BRIGHT, RESET } from '../../constants/colors.js'; //
 
 // os --EOL
 export function osEOL() {
@@ -20,7 +20,9 @@ export function osCPUs() {
     console.log(`${FG_GREEN}${BRIGHT}Total CPUs: ${cpus.length}${RESET}`);
     cpus.forEach((cpu, idx) => {
       const speedGHz = (cpu.speed / 1000).toFixed(2);
-      console.log(`${FG_GREEN}${BRIGHT}CPU ${idx + 1}: ${cpu.model}, ${speedGHz} GHz${RESET}`);
+      console.log(
+        `${FG_GREEN}${BRIGHT}CPU ${idx + 1}: ${cpu.model}, ${speedGHz} GHz${RESET}`
+      );
     });
   } catch {
     console.log(OPERATION_FAILED_MSG_RED);
