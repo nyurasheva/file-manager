@@ -1,7 +1,7 @@
 import os from 'os';
 import { OPERATION_FAILED_MSG_RED } from '../../constants/messages.js';
 import { printCwd } from '../../utils/dirUtils.js';
-import { FG_GREEN, BRIGHT, RESET } from '../../constants/colors.js'; //
+import { FG_GREEN, BRIGHT, RESET } from '../../constants/colors.js';
 
 // os --EOL
 export function osEOL() {
