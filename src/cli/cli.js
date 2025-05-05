@@ -1,17 +1,9 @@
 import readline from 'readline';
 import { setState } from '../state.js';
 import { handleCommand } from '../commands/handler.js';
-import {
-  GREETING_MSG,
-  THANKS_MSG,
-  EXIT_CMD
-} from '../constants/messages.js';
+import { GREETING_MSG, THANKS_MSG, EXIT_CMD } from '../constants/messages.js';
 import { printCwd } from '../utils/dirUtils.js';
-import {
-  FG_YELLOW,
-  BRIGHT,
-  RESET
-} from '../constants/colors.js';
+import { FG_YELLOW, BRIGHT, RESET } from '../constants/colors.js';
 
 export function startCLI({ username, home }) {
   setState('username', username);
@@ -23,7 +15,7 @@ export function startCLI({ username, home }) {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
-    prompt: ''
+    prompt: '',
   });
 
   rl.prompt();
@@ -39,7 +31,9 @@ export function startCLI({ username, home }) {
   });
 
   rl.on('close', () => {
-    console.log(`${FG_YELLOW}${BRIGHT}${THANKS_MSG} ${username}, goodbye!${RESET}`);
+    console.log(
+      `${FG_YELLOW}${BRIGHT}${THANKS_MSG} ${username}, goodbye!${RESET}`
+    );
     process.exit(0);
   });
 }

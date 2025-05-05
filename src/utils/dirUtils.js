@@ -1,6 +1,9 @@
 import path from 'path';
 import { getState, setState } from '../state.js';
-import { CURRENT_DIR_MSG, OPERATION_FAILED_MSG_RED } from '../constants/messages.js';
+import {
+  CURRENT_DIR_MSG,
+  OPERATION_FAILED_MSG_RED,
+} from '../constants/messages.js';
 import { FG_CYAN, RESET } from '../constants/colors.js';
 
 export function isRoot(dir) {

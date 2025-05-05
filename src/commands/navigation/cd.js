@@ -2,7 +2,10 @@ import fs from 'fs';
 import { setState } from '../../state.js';
 import { printCwd } from '../../utils/dirUtils.js';
 import { toAbsolutePath } from '../../utils/pathUtils.js';
-import { INVALID_CMD_MESSAGE_MAGENTA, OPERATION_FAILED_MSG_RED } from '../../constants/messages.js';
+import {
+  INVALID_CMD_MESSAGE_MAGENTA,
+  OPERATION_FAILED_MSG_RED,
+} from '../../constants/messages.js';
 
 export async function cd(target) {
   if (!target) {

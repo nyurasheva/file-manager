@@ -8,17 +8,14 @@ import { cp } from './file/cp.js';
 import { mv } from './file/mv.js';
 import { rm } from './file/rm.js';
 import { mkdir } from './file/mkdir.js';
-import {
-  osEOL,
-  osCPUs,
-  osHomeDir,
-  osUsername,
-  osArch
-} from './os/os.js';
+import { osEOL, osCPUs, osHomeDir, osUsername, osArch } from './os/os.js';
 import { hash } from './hash/hash.js';
 import { compress } from './zip/compress.js';
 import { decompress } from './zip/decompress.js';
-import { INVALID_CMD_MESSAGE_MAGENTA, CURRENT_DIR_MSG } from '../constants/messages.js';
+import {
+  INVALID_CMD_MESSAGE_MAGENTA,
+  CURRENT_DIR_MSG,
+} from '../constants/messages.js';
 import { FG_CYAN, RESET } from '../constants/colors.js';
 import { getState } from '../state.js';
 import { printCwd } from '../utils/dirUtils.js';
@@ -26,17 +23,17 @@ import { printCwd } from '../utils/dirUtils.js';
 const COMMANDS = {
   // Navigation
   up: () => up(),
-  cd: args => cd(args[0]),
+  cd: (args) => cd(args[0]),
   ls: () => ls(),
 
   // File operations
-  cat: args => cat(args[0]),
-  add: args => add(args[0]),
-  rn: args => rn(args[0], args[1]),
-  cp: args => cp(args[0], args[1]),
-  mv: args => mv(args[0], args[1]),
-  rm: args => rm(args[0]),
-  mkdir: args => mkdir(args[0]),
+  cat: (args) => cat(args[0]),
+  add: (args) => add(args[0]),
+  rn: (args) => rn(args[0], args[1]),
+  cp: (args) => cp(args[0], args[1]),
+  mv: (args) => mv(args[0], args[1]),
+  rm: (args) => rm(args[0]),
+  mkdir: (args) => mkdir(args[0]),
 
   // OS info
   '--EOL': () => osEOL(),
@@ -46,11 +43,11 @@ const COMMANDS = {
   '--architecture': () => osArch(),
 
   // Hash
-  hash: args => hash(args[0]),
+  hash: (args) => hash(args[0]),
 
   // Zip
-  compress: args => compress(args[0], args[1]),
-  decompress: args => decompress(args[0], args[1]),
+  compress: (args) => compress(args[0], args[1]),
+  decompress: (args) => decompress(args[0], args[1]),
 };
 
 export async function handleCommand(input) {

@@ -1,6 +1,6 @@
 const state = {
   username: '',
-  cwd: ''
+  cwd: '',
 };
 
 export function setState(key, value) {

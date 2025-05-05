@@ -11,7 +11,9 @@ import { printCwd } from '../../utils/dirUtils.js';
 export async function cp(filepath, newDir) {
   try {
     if (!filepath || !newDir) {
-      console.error(`${INVALID_CMD_MESSAGE_MAGENTA}${FG_MAGENTA} (cp command should have two parameters, e.g. "cp path_to_file path_to_new_directory")${RESET}`);
+      console.error(
+        `${INVALID_CMD_MESSAGE_MAGENTA}${FG_MAGENTA} (cp command should have two parameters, e.g. "cp path_to_file path_to_new_directory")${RESET}`
+      );
       return;
     }
 
@@ -23,14 +25,18 @@ export async function cp(filepath, newDir) {
 
     const srcStat = await fs.promises.stat(absolutePath);
     if (!srcStat.isFile()) {
-      console.error(`${INVALID_CMD_MESSAGE_MAGENTA}${FG_MAGENTA}. Source must be a file.${RESET}`);
+      console.error(
+        `${INVALID_CMD_MESSAGE_MAGENTA}${FG_MAGENTA}. Source must be a file.${RESET}`
+      );
       return;
     }
 
     const destStat = await fs.promises.stat(newDirPath).catch(() => null);
 
     if (!destStat?.isDirectory()) {
-      console.error(`${INVALID_CMD_MESSAGE_MAGENTA}${FG_MAGENTA}. Destination directory not found.${RESET}`);
+      console.error(
+        `${INVALID_CMD_MESSAGE_MAGENTA}${FG_MAGENTA}. Destination directory not found.${RESET}`
+      );
       return;
     }
 
@@ -40,7 +46,9 @@ export async function cp(filepath, newDir) {
     try {
       await fs.promises.access(newFilePath, fs.constants.F_OK);
       await fs.promises.unlink(newFilePath);
-      console.log(`${FG_MAGENTA}${BRIGHT}File already exists, it has been overwritten.${RESET}`);
+      console.log(
+        `${FG_MAGENTA}${BRIGHT}File already exists, it has been overwritten.${RESET}`
+      );
     } catch (err) {
       if (err.code !== 'ENOENT') {
         throw err;
@@ -49,7 +57,7 @@ export async function cp(filepath, newDir) {
 
     await new Promise((resolve, reject) => {
       const readStream = fs.createReadStream(absolutePath);
-      const writeStream = fs.createWriteStream(newFilePath);  
+      const writeStream = fs.createWriteStream(newFilePath);
 
       readStream.on('error', reject);
       writeStream.on('error', reject);
@@ -58,10 +66,14 @@ export async function cp(filepath, newDir) {
       readStream.pipe(writeStream);
     });
 
-    console.log(`${FG_GREEN}${BRIGHT}${fileName}${RESET}${FG_GREEN} has been copied to ${newDirPath}${RESET}`);
+    console.log(
+      `${FG_GREEN}${BRIGHT}${fileName}${RESET}${FG_GREEN} has been copied to ${newDirPath}${RESET}`
+    );
   } catch (err) {
     if (err.code === 'ENOENT') {
-      console.error(`${INVALID_CMD_MESSAGE_MAGENTA}${FG_MAGENTA}. File or directory not found.${RESET}`);
+      console.error(
+        `${INVALID_CMD_MESSAGE_MAGENTA}${FG_MAGENTA}. File or directory not found.${RESET}`
+      );
     } else {
       console.error(OPERATION_FAILED_MSG_RED);
       console.error(`${FG_MAGENTA}${err.message}${RESET}`);

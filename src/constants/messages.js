@@ -1,10 +1,4 @@
-import {
-  FG_RED,
-  FG_MAGENTA,
-  FG_GREEN,
-  BRIGHT,
-  RESET
-} from './colors.js'
+import { FG_RED, FG_MAGENTA, FG_GREEN, BRIGHT, RESET } from './colors.js';
 
 export const GREETING_MSG = 'Welcome to the File Manager,';
 export const THANKS_MSG = 'Thank you for using File Manager,';
