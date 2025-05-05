@@ -18,7 +18,10 @@ import {
 import { hash } from './hash/hash.js';
 import { compress } from './zip/compress.js';
 import { decompress } from './zip/decompress.js';
-import { INVALID_CMD_MESSAGE_MAGENTA } from '../constants/messages.js';
+import { INVALID_CMD_MESSAGE_MAGENTA, CURRENT_DIR_MSG } from '../constants/messages.js';
+import { FG_CYAN, RESET } from '../constants/colors.js';
+import { getState } from '../state.js';
+import { printCwd } from '../utils/dirUtils.js';
 
 const COMMANDS = {
   // Navigation
@@ -52,6 +55,7 @@ const COMMANDS = {
 
 export async function handleCommand(input) {
   const [cmd, ...args] = input.split(' ');
+  const { cwd } = getState();
 
   if (cmd === 'os') {
     const sub = args[0];
@@ -69,4 +73,5 @@ export async function handleCommand(input) {
   }
 
   console.log(INVALID_CMD_MESSAGE_MAGENTA);
+  printCwd();
 }

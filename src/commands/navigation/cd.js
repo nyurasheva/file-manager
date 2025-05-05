@@ -1,5 +1,3 @@
-// src/commands/navigation/cd.js
-
 import fs from 'fs';
 import { setState } from '../../state.js';
 import { printCwd } from '../../utils/dirUtils.js';
